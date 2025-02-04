@@ -1,4 +1,4 @@
-import { PartialType } from "@nestjs/swagger";
+import { ApiProperty, PartialType } from "@nestjs/swagger";
 import { CreateUserDto } from "./create-user.dto";
 
 import { InheritValidationMetadata } from "src/utils/decorators/InheritValidationMetadata";
@@ -9,5 +9,6 @@ import { IsOptional } from "src/utils/decorators/IsOptional";
 export class UpdateUserDto extends PartialType(CreateUserDto) {
   @IsString()
   @IsOptional()
+  @ApiProperty({ required: false })
   aditionalField?: string;
 }
