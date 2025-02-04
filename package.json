@@ -5,6 +5,7 @@
   "author": {
     "name": "Gabriel Logan"
   },
+  "license": "MIT",
   "private": true,
   "scripts": {
     "build": "nest build",
@@ -72,5 +73,6 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
-  }
+  },
+  "packageManager": "yarn@4.6.0"
 }
