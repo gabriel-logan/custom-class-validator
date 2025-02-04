@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "description": "Project to create custom validation decorators",
   "author": {
-    "name": "Gabriel Logan"
+    "name": "Gabriel Logan",
+    "url": "https://github.com/gabriel-logan"
   },
   "license": "MIT",
   "private": true,
