@@ -27,12 +27,25 @@ export function InheritValidationMetadata(
           property,
         ) as unknown;
 
-        Reflect.defineMetadata(
-          decorator,
-          metadata,
-          target.prototype as object,
-          property,
-        );
+        const targetPrototype = target.prototype as object;
+
+        if (decorator === "swagger/apiModelProperties") {
+          const updatedMetadata = { ...(metadata as object), required: false };
+
+          Reflect.defineMetadata(
+            decorator,
+            updatedMetadata,
+            targetPrototype,
+            property,
+          );
+        } else {
+          Reflect.defineMetadata(
+            decorator,
+            metadata,
+            targetPrototype,
+            property,
+          );
+        }
       });
     });
   };

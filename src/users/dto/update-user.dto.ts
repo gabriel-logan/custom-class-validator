@@ -4,6 +4,7 @@ import { CreateUserDto } from "./create-user.dto";
 import { InheritValidationMetadata } from "src/utils/decorators/InheritValidationMetadata";
 import { IsString } from "src/utils/decorators/IsString";
 import { IsOptional } from "src/utils/decorators/IsOptional";
+import { IsRequired } from "src/utils/decorators/IsRequired";
 
 @InheritValidationMetadata(CreateUserDto)
 export class UpdateUserDto extends PartialType(CreateUserDto) {
@@ -11,4 +12,8 @@ export class UpdateUserDto extends PartialType(CreateUserDto) {
   @IsOptional()
   @ApiProperty({ required: false })
   aditionalField?: string;
+
+  @IsRequired()
+  @ApiProperty({ required: true })
+  email: string;
 }
