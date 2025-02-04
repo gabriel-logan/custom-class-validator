@@ -29,8 +29,17 @@ export function InheritValidationMetadata(
 
         const targetPrototype = target.prototype as object;
 
+        // Special case for swagger/apiModelProperties
         if (decorator === "swagger/apiModelProperties") {
-          const updatedMetadata = { ...(metadata as object), required: false };
+          const existingMetadata = Reflect.getMetadata(
+            decorator,
+            targetPrototype,
+            property,
+          ) as unknown;
+
+          const updatedMetadata = existingMetadata
+            ? { ...existingMetadata } // Keeps the values that are already set
+            : { ...(metadata as object), required: false }; // Only overwrites if there is no override
 
           Reflect.defineMetadata(
             decorator,
