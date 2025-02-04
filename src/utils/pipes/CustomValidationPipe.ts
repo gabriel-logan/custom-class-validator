@@ -19,6 +19,10 @@ interface ConstructorOptions {
 export class CustomValidationPipe implements PipeTransform {
   private readonly whitelist: boolean;
 
+  /**
+   * @param options - Options for the constructor.
+   * @param options.whitelist - If true, only properties that have decorators will be validated. Default is false.
+   */
   constructor({ whitelist = false }: ConstructorOptions = {}) {
     this.whitelist = whitelist;
   }
