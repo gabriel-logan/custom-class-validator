@@ -10,10 +10,18 @@ export class UsersController {
 
   @Post()
   post(
-    @Body(new CustomValidationPipe({ whitelist: true }))
+    @Body(CustomValidationPipe)
     createUserDto: CreateUserDto,
   ) {
     return this.usersService.post(createUserDto);
+  }
+
+  @Post("whitelist")
+  postWithWhitelist(
+    @Body(new CustomValidationPipe({ whitelist: true }))
+    createUserDto: CreateUserDto,
+  ) {
+    return this.usersService.postWithWhitelist(createUserDto);
   }
 
   @Post(":id")

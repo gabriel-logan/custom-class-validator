@@ -8,6 +8,10 @@ export class UsersService {
     return createUserDto;
   }
 
+  postWithWhitelist(createUserDto: CreateUserDto) {
+    return createUserDto;
+  }
+
   postUpdate(id: number, updateUserDto: UpdateUserDto) {
     return { id, ...updateUserDto };
   }
