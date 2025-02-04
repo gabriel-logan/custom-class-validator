@@ -7,6 +7,15 @@ Repository created to demonstrate how to create validations using decorators in 
 yarn install
 ```
 
+## Configuration
+
+Create a `.env` file in the root of the project and add the following environment variables:
+
+```env
+NODE_ENV="development"
+PORT=3000
+```
+
 ## Running the app
 
 ### Development
@@ -26,4 +35,4 @@ This file contains the step-by-step to create the custom class validator.
 
 ## License
 
-This project is [MIT licensed](LICENSE).
+This project is [MIT licensed](LICENSE)
