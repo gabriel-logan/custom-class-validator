@@ -7,7 +7,11 @@ import { getBoolMetadata } from "../metadatas/getBoolMetadata";
 import { getProperties } from "../metadatas/getProperties";
 import { validateFn } from "./validateFn";
 
-export function validate(dtoFromRequest: unknown, prototypeDto: object) {
+export function validate(
+  dtoFromRequest: unknown,
+  prototypeDto: object,
+  whitelist: boolean,
+) {
   if (typeof dtoFromRequest !== "object" || dtoFromRequest === null) {
     throw new Error("DTO must be an object");
   }
@@ -40,5 +44,14 @@ export function validate(dtoFromRequest: unknown, prototypeDto: object) {
     throw new BadRequestException(errors);
   }
 
-  return dtoFromRequest;
+  // If whitelist is true, return only the properties that are in the DTO
+  const returnedValue = whitelist
+    ? Object.fromEntries(
+        Object.entries(dtoFromRequest).filter(([key]) =>
+          allStaticPropertiesDto.includes(key),
+        ),
+      )
+    : dtoFromRequest;
+
+  return returnedValue;
 }

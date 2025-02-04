@@ -1,8 +1,12 @@
 import "reflect-metadata";
 
-import { ArgumentMetadata, Injectable, PipeTransform } from "@nestjs/common";
+import { ArgumentMetadata, PipeTransform } from "@nestjs/common";
 
 import { validate } from "../validators/validate";
+
+interface ConstructorOptions {
+  whitelist?: boolean;
+}
 
 /**
  * A pipe that validates the DTOs.
@@ -12,8 +16,13 @@ import { validate } from "../validators/validate";
  * @remarks
  * This pipe is used to validate the DTOs.
  */
-@Injectable()
 export class CustomValidationPipe implements PipeTransform {
+  private readonly whitelist: boolean;
+
+  constructor({ whitelist = false }: ConstructorOptions = {}) {
+    this.whitelist = whitelist;
+  }
+
   transform(value: unknown, metadata: ArgumentMetadata) {
     if (metadata.type !== "body") return value;
 
@@ -27,7 +36,11 @@ export class CustomValidationPipe implements PipeTransform {
 
     const prototypeDto = metadata.metatype.prototype as object;
 
-    const validationResult = validate(transformedValue, prototypeDto);
+    const validationResult = validate(
+      transformedValue,
+      prototypeDto,
+      this.whitelist,
+    );
 
     return validationResult;
   }

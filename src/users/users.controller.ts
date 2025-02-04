@@ -9,7 +9,10 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Post()
-  post(@Body(CustomValidationPipe) createUserDto: CreateUserDto) {
+  post(
+    @Body(new CustomValidationPipe({ whitelist: true }))
+    createUserDto: CreateUserDto,
+  ) {
     return this.usersService.post(createUserDto);
   }
 
