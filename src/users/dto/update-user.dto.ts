@@ -13,6 +13,7 @@ export class UpdateUserDto extends PartialType(CreateUserDto) {
   @ApiProperty({ required: false })
   aditionalField?: string;
 
+  // Overriding the email field to make it required in this case
   @IsRequired()
   @ApiProperty({ required: true })
   email: string;
