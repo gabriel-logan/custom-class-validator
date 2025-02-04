@@ -7,9 +7,6 @@ import { validate } from "../validators/validate";
 /**
  * A pipe that validates the DTOs.
  * @returns The transformed value.
- * @throws An error if the value is not valid.
- * @throws An error if the metadata type is not "body".
- * @throws An error if the metadata metatype is not defined.
  * @throws An error if the validation result is not valid.
  *
  * @remarks
