@@ -22,4 +22,12 @@ describe("AppController (e2e)", () => {
       .expect(200)
       .expect("Hello World!");
   });
+
+  it("NOT FOUND", () => {
+    return request(app.getHttpServer()).get("/not-found").expect(404).expect({
+      message: "Cannot GET /not-found",
+      error: "Not Found",
+      statusCode: 404,
+    });
+  });
 });

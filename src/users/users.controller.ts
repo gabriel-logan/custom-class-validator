@@ -1,4 +1,12 @@
-import { Body, Controller, Param, ParseIntPipe, Post } from "@nestjs/common";
+import {
+  Body,
+  Controller,
+  HttpCode,
+  HttpStatus,
+  Param,
+  ParseIntPipe,
+  Post,
+} from "@nestjs/common";
 import { UsersService } from "./users.service";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { CustomValidationPipe } from "src/utils/pipes/CustomValidationPipe";
@@ -25,6 +33,7 @@ export class UsersController {
   }
 
   @Post(":id")
+  @HttpCode(HttpStatus.OK)
   postUpdate(
     @Param("id", ParseIntPipe) id: number,
     @Body(CustomValidationPipe) updateUserDto: UpdateUserDto,
