@@ -9,7 +9,9 @@ import { IsRequired } from "src/utils/decorators/IsRequired";
 @InheritValidationMetadata(CreateUserDto)
 export class UpdateUserDto extends PartialType(CreateUserDto) {
   @IsString()
-  @IsOptional() // This is needed because this field is not extended from the CreateUserDto class
+  // The @IsOptional() is needed because this field is not extended from the CreateUserDto class
+  // So it is considered required by default when using some decorators like @IsString() for example
+  @IsOptional()
   @ApiProperty({ required: false })
   aditionalField?: string;
 
