@@ -3579,7 +3579,7 @@ __metadata:
     eslint-plugin-prettier: "npm:^5.2.2"
     globals: "npm:^15.14.0"
     jest: "npm:^29.7.0"
-    multiform-validator: "npm:^2.4.0"
+    multiform-validator: "npm:^2.5.2"
     prettier: "npm:^3.4.2"
     reflect-metadata: "npm:^0.2.2"
     rxjs: "npm:^7.8.1"
@@ -6287,10 +6287,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"multiform-validator@npm:^2.4.0":
-  version: 2.4.0
-  resolution: "multiform-validator@npm:2.4.0"
-  checksum: 10c0/f8c76c5e132ede6ab67cad9191fa28524e8f31d49065d52be67d25b75013d644210f73e0cccd9bb8dbed586a580b5ff2230bb86b78127e95eadc266315cb8a46
+"multiform-validator@npm:^2.5.2":
+  version: 2.5.2
+  resolution: "multiform-validator@npm:2.5.2"
+  checksum: 10c0/63a0c2109265a4381af56cea1a5e8fa6c9608b013206af6b852f6a08782219adcf6e49ca52e5237ac3c31833e1f7a0635b31ddfd414a1a40ffe36c7183ee5fd4
   languageName: node
   linkType: hard
 
